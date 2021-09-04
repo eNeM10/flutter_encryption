@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return MaterialApp(
+      theme: ThemeData.light(),
+      home: AESDemo(),
+      title: 'Flutter Encryption',
     );
   }
 }

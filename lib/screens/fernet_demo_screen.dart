@@ -93,7 +93,8 @@ class _FernetDemoState extends State<FernetDemo> {
                         ),
                       ),
                       Flexible(
-                        child: Text(encryptedData,
+                        child: Text(
+                          encryptedData,
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -133,7 +134,8 @@ class _FernetDemoState extends State<FernetDemo> {
                         ),
                       ),
                       Flexible(
-                        child: Text(decryptedData,
+                        child: Text(
+                          decryptedData,
                           style: TextStyle(
                             fontSize: 16,
                           ),

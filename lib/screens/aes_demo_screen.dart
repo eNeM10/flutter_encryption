@@ -89,10 +89,16 @@ class _AESDemoState extends State<AESDemo> {
                         'Encrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(encryptedData),
+                        child: Text(
+                          encryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -125,10 +131,16 @@ class _AESDemoState extends State<AESDemo> {
                         'Decrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(decryptedData),
+                        child: Text(
+                          decryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),

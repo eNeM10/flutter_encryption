@@ -1,16 +1,17 @@
-# flutter_encryption
+# Flutter Encryption
+## includes AES, Fernet, Salsa20 and RSA Encryptions
 
-A new Flutter project.
+A demo app showing how to implement encryption in your apps.
+This project uses [encrypt](https://pub.dev/packages/encrypt) package and [Pointy Castle](https://github.com/PointyCastle/pointycastle) library.
 
-## Getting Started
+All encryptions and decryptions are handled by [encrypt](https://pub.dev/packages/encrypt) package while the generation of asymmetric keys for RSA is done using the [Pointy Castle](https://github.com/PointyCastle/pointycastle) library.
 
-This project is a starting point for a Flutter application.
+All the algorithms have their own helper files in the util folder. 
 
-A few resources to get you started if this is your first Flutter project:
+RSA has one extra file:
+  rsa_key_helper.dart: To handle generating asymmetric keys for RSA encryption/decryption.
+  
+  ![image](https://user-images.githubusercontent.com/51107081/132126305-44045507-85b2-4f22-9c69-90167f8ac5bd.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  ![image](https://user-images.githubusercontent.com/51107081/132126332-e96198d4-3275-4a7b-8e5f-d808b89afbab.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

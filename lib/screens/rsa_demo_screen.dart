@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/fernet_demo_screen.dart';
 import 'package:flutter_encryption/screens/salsa20_demo_screen.dart';
 import 'package:flutter_encryption/util/rsa_helper.dart';
 import 'package:flutter_encryption/util/rsa_key_helper.dart';
 import 'package:pointycastle/api.dart' as crypto;
-import 'package:pointycastle/asymmetric/api.dart';
 
 class RSADemo extends StatefulWidget {
   const RSADemo({Key? key}) : super(key: key);

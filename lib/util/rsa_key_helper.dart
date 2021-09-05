@@ -51,7 +51,7 @@ class RSAKeyHelper {
     var version = ASN1Integer(BigInt.from(0));
     var modulus = ASN1Integer(privateKey.n);
     var publicExponent = ASN1Integer(privateKey.exponent);
-    var privateExponent = ASN1Integer(privateKey.d);
+    var privateExponent = ASN1Integer(privateKey.privateExponent);
     var p = ASN1Integer(privateKey.p);
     var q = ASN1Integer(privateKey.q);
     var dP = privateKey.privateExponent! % (privateKey.p! - BigInt.from(1));

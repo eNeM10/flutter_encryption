@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/rsa_demo_screen.dart';
 import 'package:flutter_encryption/screens/salsa20_demo_screen.dart';
+import 'package:flutter_encryption/util/crypto.dart';
 
 class FernetDemo extends StatefulWidget {
   const FernetDemo({Key? key}) : super(key: key);
@@ -74,8 +75,8 @@ class _FernetDemoState extends State<FernetDemo> {
                             ),
                           );
                         } else {
-                          // encryptedData = AESEncryptionHelper()
-                          //     .encrypt(_toEncryptController.text.trim());
+                          encryptedData = FernetHelper()
+                              .encrypt(_toEncryptController.text.trim());
                           setState(() {});
                         }
                       },
@@ -88,10 +89,15 @@ class _FernetDemoState extends State<FernetDemo> {
                         'Encrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(encryptedData),
+                        child: Text(encryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -110,8 +116,7 @@ class _FernetDemoState extends State<FernetDemo> {
                             ),
                           );
                         } else {
-                          // decryptedData =
-                          //     AESEncryptionHelper().decrypt(encryptedData);
+                          decryptedData = FernetHelper().decrypt(encryptedData);
                           setState(() {});
                         }
                       },
@@ -124,10 +129,15 @@ class _FernetDemoState extends State<FernetDemo> {
                         'Decrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(decryptedData),
+                        child: Text(decryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),

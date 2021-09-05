@@ -154,6 +154,27 @@ class _FernetDemoState extends State<FernetDemo> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
+                              builder: (context) => AESDemo(),
+                            ),
+                          );
+                        },
+                        color: Colors.blue,
+                        child: Text(
+                          'AES',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
                               builder: (context) => RSADemo(),
                             ),
                           );
@@ -182,27 +203,6 @@ class _FernetDemoState extends State<FernetDemo> {
                         color: Colors.blue,
                         child: Text(
                           'Salsa20',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => AESDemo(),
-                            ),
-                          );
-                        },
-                        color: Colors.blue,
-                        child: Text(
-                          'AES',
                           style: TextStyle(
                             color: Colors.white,
                           ),

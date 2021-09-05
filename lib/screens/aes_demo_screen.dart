@@ -155,6 +155,27 @@ class _AESDemoState extends State<AESDemo> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
+                              builder: (context) => FernetDemo(),
+                            ),
+                          );
+                        },
+                        color: Colors.blue,
+                        child: Text(
+                          'Fernet',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
                               builder: (context) => RSADemo(),
                             ),
                           );
@@ -183,27 +204,6 @@ class _AESDemoState extends State<AESDemo> {
                         color: Colors.blue,
                         child: Text(
                           'Salsa20',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => FernetDemo(),
-                            ),
-                          );
-                        },
-                        color: Colors.blue,
-                        child: Text(
-                          'Fernet',
                           style: TextStyle(
                             color: Colors.white,
                           ),

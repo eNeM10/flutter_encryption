@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/rsa_demo_screen.dart';
 import 'package:flutter_encryption/screens/salsa20_demo_screen.dart';
-import 'package:flutter_encryption/util/crypto.dart';
+import 'package:flutter_encryption/util/fernet_helper.dart';
 
 class FernetDemo extends StatefulWidget {
   const FernetDemo({Key? key}) : super(key: key);

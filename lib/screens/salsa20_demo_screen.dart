@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/fernet_demo_screen.dart';
 import 'package:flutter_encryption/screens/rsa_demo_screen.dart';
-import 'package:flutter_encryption/util/crypto.dart';
+import 'package:flutter_encryption/util/salsa20_helper.dart';
 
 class Salsa20Demo extends StatefulWidget {
   const Salsa20Demo({Key? key}) : super(key: key);

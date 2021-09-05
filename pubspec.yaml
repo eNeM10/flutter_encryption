@@ -11,8 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  asn1lib: ^1.0.2
   cupertino_icons: ^1.0.2
   encrypt: ^5.0.1
+  pointycastle: ^3.3.3
 
 dev_dependencies:
   flutter_test:

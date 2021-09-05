@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/fernet_demo_screen.dart';
 import 'package:flutter_encryption/screens/salsa20_demo_screen.dart';
+import 'package:flutter_encryption/util/rsa_helper.dart';
+import 'package:flutter_encryption/util/rsa_key_helper.dart';
+import 'package:pointycastle/api.dart' as crypto;
+import 'package:pointycastle/asymmetric/api.dart';
 
 class RSADemo extends StatefulWidget {
   const RSADemo({Key? key}) : super(key: key);
@@ -13,8 +18,39 @@ class RSADemo extends StatefulWidget {
 class _RSADemoState extends State<RSADemo> {
   TextEditingController _toEncryptController = TextEditingController();
   bool _isLoading = false;
+
   String encryptedData = '';
   String decryptedData = '';
+
+  RSAKeyHelper _rsaKeyHelper = RSAKeyHelper();
+
+  late RSAHelper _rsaHelper;
+
+  late crypto.AsymmetricKeyPair keyPair;
+
+  Future<void> getKeyPair() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    keyPair = await _rsaKeyHelper.computeRSAKeyPair(
+      _rsaKeyHelper.getSecureRandom(),
+    );
+
+    _rsaHelper = RSAHelper(keyPair);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    return;
+  }
+
+  @override
+  void initState() {
+    getKeyPair();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +110,8 @@ class _RSADemoState extends State<RSADemo> {
                             ),
                           );
                         } else {
-                          // encryptedData = AESEncryptionHelper()
-                          //     .encrypt(_toEncryptController.text.trim());
+                          encryptedData = _rsaHelper.encrypt(
+                              _toEncryptController.text.trim(), _rsaKeyHelper);
                           setState(() {});
                         }
                       },
@@ -88,10 +124,16 @@ class _RSADemoState extends State<RSADemo> {
                         'Encrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(encryptedData),
+                        child: Text(
+                          encryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -110,8 +152,8 @@ class _RSADemoState extends State<RSADemo> {
                             ),
                           );
                         } else {
-                          // decryptedData =
-                          //     AESEncryptionHelper().decrypt(encryptedData);
+                          decryptedData =
+                              _rsaHelper.decrypt(encryptedData, _rsaKeyHelper);
                           setState(() {});
                         }
                       },
@@ -124,10 +166,16 @@ class _RSADemoState extends State<RSADemo> {
                         'Decrypted Data: ',
                         style: TextStyle(
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Flexible(
-                        child: Text(decryptedData),
+                        child: Text(
+                          decryptedData,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -135,6 +183,27 @@ class _RSADemoState extends State<RSADemo> {
               ),
               Row(
                 children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => AESDemo(),
+                            ),
+                          );
+                        },
+                        color: Colors.blue,
+                        child: Text(
+                          'AES',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -170,27 +239,6 @@ class _RSADemoState extends State<RSADemo> {
                         color: Colors.blue,
                         child: Text(
                           'Salsa20',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => AESDemo(),
-                            ),
-                          );
-                        },
-                        color: Colors.blue,
-                        child: Text(
-                          'AES',
                           style: TextStyle(
                             color: Colors.white,
                           ),

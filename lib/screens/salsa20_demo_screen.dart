@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_encryption/screens/aes_demo_screen.dart';
 import 'package:flutter_encryption/screens/fernet_demo_screen.dart';
 import 'package:flutter_encryption/screens/rsa_demo_screen.dart';
+import 'package:flutter_encryption/util/crypto.dart';
 
 class Salsa20Demo extends StatefulWidget {
   const Salsa20Demo({Key? key}) : super(key: key);
@@ -74,8 +75,8 @@ class _Salsa20DemoState extends State<Salsa20Demo> {
                             ),
                           );
                         } else {
-                          // encryptedData = AESEncryptionHelper()
-                          //     .encrypt(_toEncryptController.text.trim());
+                          encryptedData = Salsa20Helper()
+                              .encrypt(_toEncryptController.text.trim());
                           setState(() {});
                         }
                       },
@@ -110,8 +111,8 @@ class _Salsa20DemoState extends State<Salsa20Demo> {
                             ),
                           );
                         } else {
-                          // decryptedData =
-                          //     AESEncryptionHelper().decrypt(encryptedData);
+                          decryptedData =
+                              Salsa20Helper().decrypt(encryptedData);
                           setState(() {});
                         }
                       },
